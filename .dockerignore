@@ -1,0 +1,6 @@
+node_modules
+dist
+logs
+persistence
+redis.conf
+docker-compose.yml
