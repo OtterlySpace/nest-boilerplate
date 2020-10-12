@@ -1,10 +1,10 @@
 module.exports = {
 	type: "postgres",
-	host: "postgres-annotator-database",
+	host: "postgres-database",
 	port: 5432,
-	username: "annotator-postgres",
+	username: "boilerplate-postgres",
 	password: "BadPassword",
-	database: "annotator",
+	database: "boilerplateapi",
 	entities: ["dist/**/*.entity.js"],
 	migrations: ["dist/migrations/*.js"],
 	cli: {
