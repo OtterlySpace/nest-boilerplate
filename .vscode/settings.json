@@ -17,5 +17,6 @@
 	},
 	"peacock.remoteColor": "#800000",
 	"editor.insertSpaces": false,
-	"editor.tabSize": 4
+	"editor.tabSize": 4,
+	"editor.detectIndentation": false
 }
