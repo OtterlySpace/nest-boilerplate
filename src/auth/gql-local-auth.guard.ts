@@ -11,9 +11,7 @@ export class GqlLocalAuthGuard extends AuthGuard("local") {
 		return { body: { ...ctx.getArgs().loginUserInput } }
 	}
 	async canActivate(context: ExecutionContext): Promise<boolean> {
-		console.log("before activate")
 		const result = await super.canActivate(context)
-		console.log("after activate")
 		const ctx = GqlExecutionContext.create(context)
 		const request = ctx.getContext().req
 		const { username } = ctx.getArgs().loginUserInput
