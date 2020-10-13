@@ -19,7 +19,7 @@ export class AuthResolver {
 
 	@Query(() => User, { name: "me" })
 	@UseGuards(GqlAuthenticatedGuard)
-	whoAmI(@CurrentUser() user: User) {
+	whoAmI(@CurrentUser() user: User): Promise<User> {
 		return this.usersService.findOne(user.id)
 	}
 }

@@ -2,6 +2,11 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+input CreateTodoInput {
+  done: Boolean!
+  title: String!
+}
+
 input CreateUserInput {
   email: String!
   firstName: String
@@ -16,16 +21,32 @@ input LoginUserDto {
 }
 
 type Mutation {
+  createTodo(createTodoInput: CreateTodoInput!): Todo!
   createUser(createUserInput: CreateUserInput!): User!
   loginUser(loginUserInput: LoginUserDto!): User!
+  removeTodo(id: String!): Todo!
   removeUser(id: String!): User!
+  updateTodo(updateTodoInput: UpdateTodoInput!): Todo!
   updateUser(updateUserInput: UpdateUserInput!): User!
 }
 
 type Query {
   me: User!
+  todo(id: String!): Todo!
+  todos: [Todo!]!
   user(id: String!): User!
   users: [User!]!
+}
+
+type Todo {
+  author: User!
+  done: Boolean!
+  id: String!
+  title: String!
+}
+
+input UpdateTodoInput {
+  id: String!
 }
 
 input UpdateUserInput {
@@ -37,5 +58,6 @@ type User {
   firstName: String
   id: String!
   lastName: String
+  todos: [Todo!]
   username: String!
 }
