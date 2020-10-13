@@ -46,11 +46,16 @@ type Todo {
 }
 
 input UpdateTodoInput {
+  done: Boolean
   id: String!
+  title: String
 }
 
 input UpdateUserInput {
+  firstName: String
   id: String!
+  lastName: String
+  password: String
 }
 
 type User {

@@ -20,9 +20,11 @@ export class CreateUserInput {
 	username: string;
 
 	@Field({ nullable: true })
+	@IsString()
 	firstName?: string
 
 	@Field({ nullable: true })
+	@IsString()
 	lastName?: string
 
 	@Field()
