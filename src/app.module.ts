@@ -11,10 +11,21 @@ import { TodosModule } from "./todos/todos.module"
 
 @Module({
 	imports: [
-		GraphQLModule.forRoot({
-			context: ({ req }) => ({ req }),
-			autoSchemaFile: join(process.cwd(), "src/schema.gql"),
-			sortSchema: true
+		GraphQLModule.forRootAsync({
+			imports: [ConfigModule],
+			inject: [ConfigService],
+			useFactory: async (configService: ConfigService) => ({
+				context: ({ req }) => ({ req }),
+				autoSchemaFile: join(process.cwd(), "src/schema.gql"),
+				sortSchema: true,
+				cors: {
+					origin: configService
+						.get("CORS_ORIGINS", "http://localhost:3000")
+						.split(","),
+					credentials: true
+				}
+
+			})
 		}),
 		TypeOrmModule.forRootAsync({
 			imports: [ConfigModule],
