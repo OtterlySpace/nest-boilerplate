@@ -51,7 +51,7 @@ async function bootstrap() {
 			}),
 			secret: configService.get("SESSION_SECRET", "change me pls"),
 			cookie: {
-				maxAge: 10 * 60 * 1000, // 10 minutes
+				maxAge: 7 * 60 * 60 * 1000, // 7 days
 				secure: true,
 				httpOnly: true,
 				sameSite: "none"
