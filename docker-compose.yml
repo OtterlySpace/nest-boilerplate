@@ -36,10 +36,10 @@ services:
             - ./src:/usr/src/app/src # Enable hot reload in the app container
         labels:
             - "traefik.enable=true"
-            - "traefik.http.routers.nest.rule=Host(`${API_DOMAIN}`)"
-            - "traefik.http.services.nest.loadbalancer.server.port=3000"
-            - "traefik.http.routers.nest.tls.certresolver=letsencrypt-ovhdns"
-            - "traefik.http.routers.nest.entrypoints=websecure"
+            - "traefik.http.routers.nest-boilerplate.rule=Host(`${API_DOMAIN}`)"
+            - "traefik.http.services.nest-boilerplate.loadbalancer.server.port=3000"
+            - "traefik.http.routers.nest-boilerplate.tls.certresolver=letsencrypt-ovhdns"
+            - "traefik.http.routers.nest-boilerplate.entrypoints=websecure"
     postgres-pgadmin:
         image: dpage/pgadmin4:latest
         restart: unless-stopped
