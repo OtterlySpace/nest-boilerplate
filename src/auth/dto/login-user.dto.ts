@@ -10,7 +10,7 @@ export class LoginUserDto {
 
 	@IsString()
 	@IsNotEmpty()
-	@MinLength(8)
+	@MinLength(8, { message: "error.password.tooShort" })
 	@MaxLength(64)
 	@Field()
 	password: string
