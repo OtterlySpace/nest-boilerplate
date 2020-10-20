@@ -41,7 +41,6 @@ services:
             - "traefik.http.routers.nest.tls.certresolver=letsencrypt-ovhdns"
             - "traefik.http.routers.nest.entrypoints=websecure"
     postgres-pgadmin:
-        container_name: postgres-nest-pgadmin
         image: dpage/pgadmin4:latest
         restart: unless-stopped
         environment:
