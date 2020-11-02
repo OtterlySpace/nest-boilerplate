@@ -1,3 +1,6 @@
+Nuxt est une base sur nuxt, pour vous permettre de réaliser vos propres sites et applications facilement, rapidement et de façon optimisé.
+
+
 ## Guide en FR pour nest-boilerplate
 https://www.notion.so/otterlyspace/D-couvrez-le-boilerplate-NestJS-d-Otterly-Space-3a10066b0fde4e8a90226e4ae0b79df3
 
