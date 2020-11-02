@@ -1,18 +1,13 @@
 import { ObjectType, Field, Int } from "@nestjs/graphql"
 import { User } from "src/users/entities/user.entity"
-import {
-	Column,
-	Entity,
-	ManyToOne,
-	PrimaryGeneratedColumn,
-} from "typeorm"
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm"
 
 @ObjectType()
 @Entity()
 export class Todo {
 	@PrimaryGeneratedColumn("uuid")
 	@Field()
-	id: string;
+	id: string
 
 	@Column()
 	@Field()
@@ -22,10 +17,7 @@ export class Todo {
 	@Field()
 	done: boolean
 
-	@ManyToOne(
-		_type => User,
-		user => user.todos
-	)
-	@Field(_type => User)
+	@ManyToOne((_type) => User, (user) => user.todos)
+	@Field((_type) => User)
 	author: User
 }

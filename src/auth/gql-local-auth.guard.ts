@@ -5,7 +5,9 @@ import { UsersService } from "src/users/users.service"
 
 @Injectable()
 export class GqlLocalAuthGuard extends AuthGuard("local") {
-	constructor(private readonly usersService: UsersService) { super() }
+	constructor(private readonly usersService: UsersService) {
+		super()
+	}
 	getRequest(context: ExecutionContext) {
 		const ctx = GqlExecutionContext.create(context)
 		return { body: { ...ctx.getArgs().loginUserInput } }

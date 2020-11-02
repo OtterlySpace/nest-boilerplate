@@ -8,7 +8,7 @@ export class UpdateUserInput extends PartialType(CreateUserInput) {
 	@Field()
 	@IsString()
 	@IsNotEmpty()
-	id: string;
+	id: string
 
 	@Field({ nullable: true })
 	@IsString()
@@ -22,5 +22,5 @@ export class UpdateUserInput extends PartialType(CreateUserInput) {
 	@IsString()
 	@MinLength(8)
 	@MaxLength(64)
-	password: string;
+	password: string
 }

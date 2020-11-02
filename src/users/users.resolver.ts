@@ -6,10 +6,12 @@ import { UpdateUserInput } from "./dto/update-user.input"
 
 @Resolver(() => User)
 export class UsersResolver {
-	constructor(private readonly usersService: UsersService) { }
+	constructor(private readonly usersService: UsersService) {}
 
 	@Mutation(() => User)
-	createUser(@Args("createUserInput") createUserInput: CreateUserInput): Promise<User> {
+	createUser(
+		@Args("createUserInput") createUserInput: CreateUserInput
+	): Promise<User> {
 		return this.usersService.create(createUserInput)
 	}
 
@@ -24,7 +26,9 @@ export class UsersResolver {
 	}
 
 	@Mutation(() => User)
-	updateUser(@Args("updateUserInput") updateUserInput: UpdateUserInput): Promise<User> {
+	updateUser(
+		@Args("updateUserInput") updateUserInput: UpdateUserInput
+	): Promise<User> {
 		return this.usersService.update(updateUserInput.id, updateUserInput)
 	}
 

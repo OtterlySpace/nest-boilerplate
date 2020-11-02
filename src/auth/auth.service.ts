@@ -5,9 +5,7 @@ import { User } from "src/users/entities/user.entity"
 
 @Injectable()
 export class AuthService {
-	constructor(
-		private usersService: UsersService,
-	) { }
+	constructor(private usersService: UsersService) {}
 
 	async validateUser(username: string, pass: string): Promise<any> {
 		const user = await this.usersService.findOneByUsername(username)

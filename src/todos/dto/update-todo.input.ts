@@ -7,7 +7,7 @@ import { IsBoolean, IsString } from "class-validator"
 export class UpdateTodoInput extends PartialType(CreateTodoInput) {
 	@Field()
 	@IsString()
-	id: string;
+	id: string
 
 	@Field({ nullable: true })
 	@IsString()

@@ -13,9 +13,12 @@ export class TodosService {
 		@InjectRepository(Todo)
 		private readonly todoRepository: Repository<Todo>,
 		private readonly usersService: UsersService
-	) { }
+	) {}
 
-	async create(createTodoInput: CreateTodoInput, authorId: string): Promise<Todo> {
+	async create(
+		createTodoInput: CreateTodoInput,
+		authorId: string
+	): Promise<Todo> {
 		const author = await this.preloadUserByUid(authorId)
 		const todo = this.todoRepository.create({ ...createTodoInput, author })
 		return this.todoRepository.save(todo)
@@ -30,7 +33,7 @@ export class TodosService {
 
 	async findOne(id: string): Promise<Todo> {
 		const todo = await this.todoRepository.findOne(id, {
-			relations: ["author"],
+			relations: ["author"]
 		})
 		if (!todo) {
 			throw new NotFoundException(`Todo ${id} not found`)
@@ -41,7 +44,7 @@ export class TodosService {
 	async update(id: string, updateTodoInput: UpdateTodoInput): Promise<Todo> {
 		const todo = await this.todoRepository.preload({
 			id,
-			...updateTodoInput,
+			...updateTodoInput
 		})
 		if (!todo) {
 			throw new NotFoundException(`Todo ${id} not found`)

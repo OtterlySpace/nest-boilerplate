@@ -9,4 +9,4 @@ import { UsersModule } from "src/users/users.module"
 	imports: [TypeOrmModule.forFeature([Todo]), UsersModule],
 	providers: [TodosResolver, TodosService]
 })
-export class TodosModule { }
+export class TodosModule {}

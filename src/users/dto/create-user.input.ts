@@ -12,12 +12,12 @@ export class CreateUserInput {
 	@Field()
 	@IsEmail()
 	@IsNotEmpty()
-	email: string;
+	email: string
 
 	@Field()
 	@IsString()
 	@IsNotEmpty()
-	username: string;
+	username: string
 
 	@Field({ nullable: true })
 	firstName?: string
@@ -30,5 +30,5 @@ export class CreateUserInput {
 	@IsNotEmpty()
 	@MinLength(8)
 	@MaxLength(64)
-	password: string;
+	password: string
 }
