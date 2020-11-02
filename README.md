@@ -1,4 +1,4 @@
-Nuxt est une base sur nuxt, pour vous permettre de réaliser vos propres sites et applications facilement, rapidement et de façon optimisé.
+Nest-boilerplate est une base sur NestJS, pour vous permettre de réaliser vos propres sites et applications facilement, rapidement et de façon optimisé.
 
 
 ## Guide en FR pour nest-boilerplate
