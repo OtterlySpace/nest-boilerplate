@@ -1,3 +1,7 @@
+## Guide en FR pour nest-boilerplate
+https://www.notion.so/otterlyspace/D-couvrez-le-boilerplate-NestJS-d-Otterly-Space-3a10066b0fde4e8a90226e4ae0b79df3
+
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
 </p>
