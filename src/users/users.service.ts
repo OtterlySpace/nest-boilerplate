@@ -11,23 +11,26 @@ export class UsersService {
 	constructor(
 		@InjectRepository(User)
 		private readonly userRepository: Repository<User>
-	) { }
+	) {}
 
 	async create(createUserInput: CreateUserInput): Promise<User> {
 		const password = await this.hashPassword(createUserInput.password)
-		const user = this.userRepository.create({ ...createUserInput, password })
+		const user = this.userRepository.create({
+			...createUserInput,
+			password
+		})
 		return this.userRepository.save(user)
 	}
 
 	findAll(): Promise<User[]> {
 		return this.userRepository.find({
-			relations: ["todos"],
+			relations: ["todos"]
 		})
 	}
 
 	async findOne(id: string): Promise<User> {
 		const user = await this.userRepository.findOne(id, {
-			relations: ["todos"],
+			relations: ["todos"]
 		})
 		if (!user) {
 			throw new NotFoundException(`User ${id} not found`)
@@ -38,7 +41,7 @@ export class UsersService {
 	async findOneByUsername(username: string): Promise<User> {
 		const user = await this.userRepository.findOne({
 			where: { username: username },
-			relations: ["todos"],
+			relations: ["todos"]
 		})
 		if (!user) {
 			throw new NotFoundException(`User ${username} not found`)
@@ -49,7 +52,7 @@ export class UsersService {
 	async update(id: string, updateUserInput: UpdateUserInput): Promise<User> {
 		const user = await this.userRepository.preload({
 			id,
-			...updateUserInput,
+			...updateUserInput
 		})
 		if (!user) {
 			throw new NotFoundException(`User ${id} not found`)

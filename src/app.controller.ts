@@ -5,7 +5,7 @@ import { map } from "rxjs/operators"
 
 @Controller()
 export class AppController {
-	constructor(private readonly appService: AppService) { }
+	constructor(private readonly appService: AppService) {}
 
 	@Get()
 	getHello(): string {
@@ -24,7 +24,7 @@ export class AppController {
     `
 	}
 
-  @Sse("/sseCall")
+	@Sse("/sseCall")
 	sse(): Observable<MessageEvent> {
 		return interval(1000).pipe(map((_) => ({ data: { hello: "world" } })))
 	}

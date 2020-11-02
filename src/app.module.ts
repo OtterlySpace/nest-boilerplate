@@ -24,7 +24,6 @@ import { TodosModule } from "./todos/todos.module"
 						.split(","),
 					credentials: true
 				}
-
 			})
 		}),
 		TypeOrmModule.forRootAsync({
@@ -46,6 +45,6 @@ import { TodosModule } from "./todos/todos.module"
 		TodosModule
 	],
 	controllers: [AppController],
-	providers: [AppService],
+	providers: [AppService]
 })
-export class AppModule { }
+export class AppModule {}

@@ -9,11 +9,13 @@ import { CurrentUser } from "./current-user.decorator"
 
 @Resolver()
 export class AuthResolver {
-	constructor(private readonly usersService: UsersService) { }
+	constructor(private readonly usersService: UsersService) {}
 
 	@Mutation(() => User)
 	@UseGuards(GqlLocalAuthGuard)
-	loginUser(@Args("loginUserInput") loginUserInput: LoginUserDto): Promise<User> {
+	loginUser(
+		@Args("loginUserInput") loginUserInput: LoginUserDto
+	): Promise<User> {
 		return this.usersService.findOneByUsername(loginUserInput.username)
 	}
 

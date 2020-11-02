@@ -7,12 +7,14 @@ import { LocalAuthGuard } from "./local-auth.guard"
 
 @Controller("auth")
 export class AuthController {
-	constructor(private readonly usersService: UsersService) { }
+	constructor(private readonly usersService: UsersService) {}
 
 	@Post("login")
 	@UseGuards(LocalAuthGuard)
 	async loginUser(@Body() loginUserInput: LoginUserDto): Promise<User> {
-		const user = await this.usersService.findOneByUsername(loginUserInput.username)
+		const user = await this.usersService.findOneByUsername(
+			loginUserInput.username
+		)
 		delete user.password
 		return user
 	}
@@ -25,5 +27,4 @@ export class AuthController {
 		req.logout()
 		return user
 	}
-
 }

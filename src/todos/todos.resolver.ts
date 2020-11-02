@@ -10,11 +10,14 @@ import { CurrentUser } from "src/auth/current-user.decorator"
 
 @Resolver(() => Todo)
 export class TodosResolver {
-	constructor(private readonly todosService: TodosService) { }
+	constructor(private readonly todosService: TodosService) {}
 
 	@Mutation(() => Todo)
 	@UseGuards(GqlAuthenticatedGuard)
-	createTodo(@Args("createTodoInput") createTodoInput: CreateTodoInput, @CurrentUser() user: User): Promise<Todo> {
+	createTodo(
+		@Args("createTodoInput") createTodoInput: CreateTodoInput,
+		@CurrentUser() user: User
+	): Promise<Todo> {
 		return this.todosService.create(createTodoInput, user.id)
 	}
 
@@ -32,7 +35,9 @@ export class TodosResolver {
 
 	@Mutation(() => Todo)
 	@UseGuards(GqlAuthenticatedGuard)
-	updateTodo(@Args("updateTodoInput") updateTodoInput: UpdateTodoInput): Promise<Todo> {
+	updateTodo(
+		@Args("updateTodoInput") updateTodoInput: UpdateTodoInput
+	): Promise<Todo> {
 		return this.todosService.update(updateTodoInput.id, updateTodoInput)
 	}
 

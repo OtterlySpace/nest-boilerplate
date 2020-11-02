@@ -11,4 +11,4 @@ import { Todo } from "src/todos/entities/todo.entity"
 	providers: [UsersResolver, UsersService],
 	exports: [UsersService]
 })
-export class UsersModule { }
+export class UsersModule {}
