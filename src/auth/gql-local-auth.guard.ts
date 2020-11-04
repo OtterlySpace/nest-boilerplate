@@ -17,7 +17,7 @@ export class GqlLocalAuthGuard extends AuthGuard("local") {
 		const ctx = GqlExecutionContext.create(context)
 		const request = ctx.getContext().req
 		const { username } = ctx.getArgs().loginUserInput
-		const user = await this.usersService.findOneByUsername(username)
+		const user = await this.usersService.findOneByUsernameOrEmail(username)
 		delete user.password
 		request.user = user
 		await super.logIn(request)

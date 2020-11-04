@@ -12,7 +12,7 @@ export class AuthController {
 	@Post("login")
 	@UseGuards(LocalAuthGuard)
 	async loginUser(@Body() loginUserInput: LoginUserDto): Promise<User> {
-		const user = await this.usersService.findOneByUsername(
+		const user = await this.usersService.findOneByUsernameOrEmail(
 			loginUserInput.username
 		)
 		delete user.password

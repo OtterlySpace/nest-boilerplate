@@ -16,7 +16,7 @@ export class AuthResolver {
 	loginUser(
 		@Args("loginUserInput") loginUserInput: LoginUserDto
 	): Promise<User> {
-		return this.usersService.findOneByUsername(loginUserInput.username)
+		return this.usersService.findOneByUsernameOrEmail(loginUserInput.username)
 	}
 
 	@Query(() => User, { name: "me" })
