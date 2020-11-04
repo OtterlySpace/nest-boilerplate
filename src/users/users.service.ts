@@ -49,6 +49,23 @@ export class UsersService {
 		return user
 	}
 
+	async findOneByUsernameOrEmail(username: string): Promise<User> {
+		let user = await this.userRepository.findOne({
+			where: { username: username},
+			relations: ["todos"]
+		})
+		if (!user) {
+			user = await this.userRepository.findOne({
+				where: { email: username},
+				relations: ["todos"]
+			})
+			if (!user) {
+				throw new NotFoundException(`User test ${username} not found`)
+			}
+		}
+		return user
+	}
+
 	async update(id: string, updateUserInput: UpdateUserInput): Promise<User> {
 		const user = await this.userRepository.preload({
 			id,

@@ -8,7 +8,7 @@ export class AuthService {
 	constructor(private usersService: UsersService) {}
 
 	async validateUser(username: string, pass: string): Promise<any> {
-		const user = await this.usersService.findOneByUsername(username)
+		const user = await this.usersService.findOneByUsernameOrEmail(username)
 		if (
 			user &&
 			(await argon2.verify(user.password, pass, {
