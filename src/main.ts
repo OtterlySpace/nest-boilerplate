@@ -15,13 +15,13 @@ async function bootstrap() {
 	const configService = app.get(ConfigService)
 	const RedisSessionStore = redisSessionStore(session)
 	const RedisClient = redis.createClient({
-		host: configService.get("REDIS_SESSIONS_HOST", "127.0.0.1"),
-		port: configService.get("REDIS_SESSIONS_PORT", 6379)
+		host: configService.get<string>("REDIS_SESSIONS_HOST", "127.0.0.1"),
+		port: configService.get<number>("REDIS_SESSIONS_PORT", 6379)
 	})
 
 	// CORS setup
 	const origins = configService
-		.get("CORS_ORIGINS", "http://localhost:3000")
+		.get<string>("CORS_ORIGINS", "http://localhost:3000")
 		.split(",")
 	app.enableCors({
 		origin: origins,
@@ -45,11 +45,11 @@ async function bootstrap() {
 	app.use(
 		session({
 			store: new RedisSessionStore({
-				host: configService.get("REDIS_SESSIONS_HOST", "127.0.0.1"),
-				port: configService.get("REDIS_SESSIONS_PORT", 6379),
+				host: configService.get<string>("REDIS_SESSIONS_HOST", "127.0.0.1"),
+				port: configService.get<number>("REDIS_SESSIONS_PORT", 6379),
 				client: RedisClient
 			}),
-			secret: configService.get("SESSION_SECRET", "change me pls"),
+			secret: configService.get<string>("SESSION_SECRET", "change me pls"),
 			cookie: {
 				maxAge: 7 * 60 * 60 * 1000, // 7 days
 				secure: true,
@@ -68,8 +68,8 @@ async function bootstrap() {
 	app.use(
 		rateLimit({
 			store: new redisRatelimitStore({
-				host: configService.get("REDIS_SESSIONS_HOST", "127.0.0.1"),
-				port: configService.get("REDIS_SESSIONS_PORT", 6379),
+				host: configService.get<string>("REDIS_SESSIONS_HOST", "127.0.0.1"),
+				port: configService.get<number>("REDIS_SESSIONS_PORT", 6379),
 				client: RedisClient,
 				expiry: ratelimitDuration // value in seconds
 			}),
@@ -78,7 +78,7 @@ async function bootstrap() {
 		})
 	)
 
-	await app.listen(configService.get("API_PORT", 3000), "0.0.0.0")
+	await app.listen(configService.get<number>("API_PORT", 3000), "0.0.0.0")
 	console.log(`Application is running on: ${await app.getUrl()}`)
 }
 bootstrap()
