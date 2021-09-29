@@ -40,27 +40,27 @@ services:
             - "traefik.http.services.nest-boilerplate.loadbalancer.server.port=3000"
             - "traefik.http.routers.nest-boilerplate.tls.certresolver=letsencrypt-ovhdns"
             - "traefik.http.routers.nest-boilerplate.entrypoints=websecure"
-    postgres-pgadmin:
-        image: dpage/pgadmin4:latest
-        restart: unless-stopped
-        environment:
-            - PGADMIN_DEFAULT_EMAIL=user@domain.com
-            - PGADMIN_DEFAULT_PASSWORD=SuperSecret
-        volumes:
-            - pgadmin:/var/lib/pgadmin
-        ports:
-            - 127.0.0.1:8004:80
-        networks:
-            - nest-boilerplate
-    redis-insight:
-        image: redislabs/redisinsight:latest
-        restart: unless-stopped
-        volumes:
-            - redisinsight:/db
-        ports:
-            - 127.0.0.1:8003:8001
-        networks:
-            - nest-boilerplate
+    # postgres-pgadmin:
+    #     image: dpage/pgadmin4:latest
+    #     restart: unless-stopped
+    #     environment:
+    #         - PGADMIN_DEFAULT_EMAIL=user@domain.com
+    #         - PGADMIN_DEFAULT_PASSWORD=SuperSecret
+    #     volumes:
+    #         - pgadmin:/var/lib/pgadmin
+    #     ports:
+    #         - 127.0.0.1:8004:80
+    #     networks:
+    #         - nest-boilerplate
+    # redis-insight:
+    #     image: redislabs/redisinsight:latest
+    #     restart: unless-stopped
+    #     volumes:
+    #         - redisinsight:/db
+    #     ports:
+    #         - 127.0.0.1:8003:8001
+    #     networks:
+    #         - nest-boilerplate
 
 networks:
     nest-boilerplate:
